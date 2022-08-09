@@ -10,5 +10,7 @@ export class ParseError extends Error {
     }
 
     super(`${parseResult.errors.length} error(s) occurred during parsing: ${messages.join(". ")}`);
+
+    this.parseResult = parseResult;
   }
 }
