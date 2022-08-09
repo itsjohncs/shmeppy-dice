@@ -89,6 +89,7 @@ export class DiceLexer implements Lexer {
         case curChar === ',': return this.createToken(TokenType.Comma, curChar);
         case curChar === '(': return this.createToken(TokenType.ParenthesisOpen, curChar);
         case curChar === ')': return this.createToken(TokenType.ParenthesisClose, curChar);
+        case curChar === '\\': return this.createToken(TokenType.Comment, curChar);
         case curChar === '=': return this.createToken(TokenType.Equals, curChar);
         case curChar === '+': return this.createToken(TokenType.Plus, curChar);
         case curChar === '/': return this.createToken(TokenType.Slash, curChar);
