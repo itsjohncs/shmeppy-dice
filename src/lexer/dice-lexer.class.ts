@@ -3,6 +3,7 @@ import { Lexer } from './lexer.interface';
 import { StringCharacterStream } from './string-character-stream.class';
 import { Token } from './token.class';
 import { TokenType } from './token-type.enum';
+import { LexError } from "./lex-error.class";
 
 export class DiceLexer implements Lexer {
   protected stream: CharacterStream;
@@ -119,7 +120,7 @@ export class DiceLexer implements Lexer {
         case /\s/.test(curChar):
           // Ignore whitespace.
           break;
-        default: throw new Error(`Unknown token: '${curChar}'.`);
+        default: throw new LexError(curChar, this.stream.getCurrentPosition());
       }
     }
     // Terminator at end of stream.

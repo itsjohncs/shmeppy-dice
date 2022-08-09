@@ -2,6 +2,7 @@ import * as Ast from '../ast';
 import { Lexer, TokenType } from '../lexer';
 import { BasicParser } from './basic-parser.class';
 import { ParseResult } from './parse-result.class';
+import { LexError } from '../lexer/lex-error.class';
 
 const BooleanOperatorMap: { [token: string]: Ast.NodeType } = {};
 BooleanOperatorMap[TokenType.Equals] = Ast.NodeType.Equal;
@@ -25,7 +26,15 @@ export class DiceParser extends BasicParser {
 
   parse(): ParseResult {
     const result = new ParseResult();
-    result.root = this.parseExpression(result);
+    try {
+      result.root = this.parseExpression(result);
+    } catch (e) {
+      if (e instanceof LexError) {
+        this.errorMessage(result, e.toString());
+      } else {
+        throw e;
+      }
+    }
     return result;
   }
 

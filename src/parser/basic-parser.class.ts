@@ -41,7 +41,7 @@ export abstract class BasicParser implements Parser {
     this.errorMessage(result, message, actual);
   }
 
-  protected errorMessage(result: ParseResult, message: string, token: Token) {
+  protected errorMessage(result: ParseResult, message: string, token?: Token) {
     result.errors.push(new ParseErrorMessage(message, token, new Error().stack));
   }
 }
