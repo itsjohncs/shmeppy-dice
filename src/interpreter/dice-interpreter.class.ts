@@ -14,10 +14,10 @@ interface SortedDiceRolls {
 }
 
 export class DiceInterpreter implements Interpreter<DiceResult> {
-  protected functions: FunctionDefinitionList;
-  protected random: RandomProvider;
-  protected generator: DiceGenerator;
-  protected options: InterpreterOptions;
+  functions: FunctionDefinitionList;
+  random: RandomProvider;
+  generator: DiceGenerator;
+  options: InterpreterOptions;
 
   constructor(functions?: FunctionDefinitionList, random?: RandomProvider, generator?: DiceGenerator, options?: InterpreterOptions) {
     this.functions = DefaultFunctionDefinitions;

@@ -46,3 +46,15 @@ DefaultFunctionDefinitions['dbldice'] = (interpreter, functionNode, errors) => {
   const proxiedInterpreter = new Proxy(interpreter, dblDiceInterpreterProxyHandler);
   return proxiedInterpreter.evaluate(functionNode.getChild(0), errors);
 };
+
+DefaultFunctionDefinitions['seed'] = (interpreter, functionNode, errors) => {
+  const seed = interpreter.evaluate(functionNode.getChild(1), errors);
+  const oldRandom = interpreter.random;
+
+  interpreter.random = oldRandom.newFromSeed(seed);
+  try {
+    return interpreter.evaluate(functionNode.getChild(0), errors);
+  } finally {
+    interpreter.random = oldRandom;
+  }
+};
