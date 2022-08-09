@@ -116,7 +116,7 @@ export class DiceLexer implements Lexer {
           } else {
             return this.createToken(TokenType.Less, curChar);
           }
-        case /\W/.test(curChar):
+        case /\s/.test(curChar):
           // Ignore whitespace.
           break;
         default: throw new Error(`Unknown token: '${curChar}'.`);
