@@ -223,6 +223,9 @@ export class DiceParser extends BasicParser {
         root.addChild(Ast.Factory.create(Ast.NodeType.DiceSides))
           .setAttribute('value', 'fate');
         break;
+      default:
+        this.errorMessage(result, `Unknown dice type "${token.value}".`, token);
+        break;
     }
 
     return root;
