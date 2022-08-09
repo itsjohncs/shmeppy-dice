@@ -8,6 +8,7 @@ import { Parser } from './parser';
 import { DiceParser } from './parser/dice-parser.class';
 import { RandomProvider } from './random';
 import { InterpreterOptions } from './interpreter/interpreter-options.interface';
+import { ParseError } from './parser/parse-error.class';
 
 export class Dice {
   constructor(
@@ -21,6 +22,9 @@ export class Dice {
     const parser = this.createParser(lexer);
     const interpreter = this.createInterpreter();
     const parseResult = parser.parse();
+    if (parseResult.errors.length > 0) {
+      throw new ParseError(parseResult);
+    }
     return interpreter.interpret(parseResult.root);
   }
 

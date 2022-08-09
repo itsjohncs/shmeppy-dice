@@ -1,5 +1,5 @@
 import { DiceLexer, Lexer, Token, TokenType } from '../lexer';
-import { ParserError } from './error-message.class';
+import { ParseErrorMessage } from './error-message.class';
 import { ParseResult } from './parse-result.class';
 import { Parser } from './parser.interface';
 
@@ -42,6 +42,6 @@ export abstract class BasicParser implements Parser {
   }
 
   protected errorMessage(result: ParseResult, message: string, token: Token) {
-    result.errors.push(new ParserError(message, token, new Error().stack));
+    result.errors.push(new ParseErrorMessage(message, token, new Error().stack));
   }
 }
