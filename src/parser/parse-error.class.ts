@@ -1,4 +1,4 @@
-import { ParseResult } from "./parse-result.class";
+import { ParseResult } from './parse-result.class';
 
 export class ParseError extends Error {
   parseResult: ParseResult;
@@ -9,7 +9,7 @@ export class ParseError extends Error {
       messages.push(`(${i + 1}) ${parseResult.errors[i].toString()}`);
     }
 
-    super(`${parseResult.errors.length} error(s) occurred during parsing: ${messages.join(". ")}`);
+    super(`${parseResult.errors.length} error(s) occurred during parsing: ${messages.join('. ')}`);
 
     this.parseResult = parseResult;
   }

@@ -3,7 +3,7 @@ import { Lexer } from './lexer.interface';
 import { StringCharacterStream } from './string-character-stream.class';
 import { Token } from './token.class';
 import { TokenType } from './token-type.enum';
-import { LexError } from "./lex-error.class";
+import { LexError } from './lex-error.class';
 
 export class DiceLexer implements Lexer {
   protected stream: CharacterStream;
