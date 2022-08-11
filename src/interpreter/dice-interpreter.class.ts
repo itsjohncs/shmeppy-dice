@@ -34,7 +34,7 @@ export class DiceInterpreter implements Interpreter<DiceResult> {
     const successes = this.countSuccesses(exp, errors);
     const fails = this.countFailures(exp, errors);
     const renderedExpression = this.generator.generate(exp);
-    return new DiceResult(exp, renderedExpression, total, successes, fails, errors);
+    return new DiceResult(exp, renderedExpression, total, this.random.getInitialSeed(), successes, fails, errors);
   }
 
   evaluate(expression: Ast.ExpressionNode, errors: InterpreterError[]): any {
