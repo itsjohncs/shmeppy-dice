@@ -14,7 +14,7 @@ SCRIPT_DIR="$(
 
 cd "$SCRIPT_DIR/src"
 
-ts-node 4< <(printf "%s" "$1") <<EOM
+ts-node 4< <(printf "%s" "$1") << EOM
 import {Dice} from ".";
 import {inspect} from "util";
 import {readFileSync} from "fs";
