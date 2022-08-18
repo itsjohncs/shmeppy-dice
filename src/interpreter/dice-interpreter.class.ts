@@ -385,7 +385,7 @@ export class DiceInterpreter implements Interpreter<DiceResult> {
   }
 
   countFailures(expression: Ast.ExpressionNode, errors: InterpreterErrorMessage[]): number {
-    return this.countSuccessOrFailure(expression, die => !die.getAttribute('success'), errors);
+    return this.countSuccessOrFailure(expression, die => die.getAttribute('success') === false, errors);
   }
 
   private countSuccessOrFailure(expression: Ast.ExpressionNode,
