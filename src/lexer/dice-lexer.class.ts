@@ -122,19 +122,9 @@ export class DiceLexer implements Lexer {
             return this.createToken(TokenType.Asterisk, curChar);
           }
         case curChar === '>':
-          if (this.stream.peekNextCharacter() === '=') {
-            this.stream.getNextCharacter();
-            return this.createToken(TokenType.GreaterOrEqual, curChar + this.stream.getCurrentCharacter());
-          } else {
-            return this.createToken(TokenType.Greater, curChar);
-          }
+          return this.createToken(TokenType.GreaterOrEqual, curChar);
         case curChar === '<':
-          if (this.stream.peekNextCharacter() === '=') {
-            this.stream.getNextCharacter();
-            return this.createToken(TokenType.LessOrEqual, curChar + this.stream.getCurrentCharacter());
-          } else {
-            return this.createToken(TokenType.Less, curChar);
-          }
+          return this.createToken(TokenType.LessOrEqual, curChar);
         case /\s/.test(curChar):
           // Ignore whitespace.
           break;
