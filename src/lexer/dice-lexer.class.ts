@@ -10,6 +10,14 @@ export class DiceLexer implements Lexer {
   private currentToken: Token;
   private nextToken: Token;
 
+  // `d10...3` should roll a d10 3 times. After parsing `10` we don't know
+  // whether the period is part of the number (ex: `10.3`) or is part of an
+  // ellipsis so we consume it and check. If we see that it's not a decimal
+  // point in a number (ie: there's not a number following it) we'll emit the
+  // number and then set this to true so we know we're in the middle of
+  // consuming an ellipsis.
+  private partialEllipsisConsumed: boolean = false;
+
   private numCharRegex: RegExp = /[0-9]/;
   private idCharRegex: RegExp = /[a-zA-Z]/;
 
@@ -65,10 +73,18 @@ export class DiceLexer implements Lexer {
       buffer += this.stream.getNextCharacter();
       nextChar = this.stream.peekNextCharacter();
     }
+
+    if (buffer.endsWith(".")) {
+      buffer = buffer.slice(0, -1);
+      this.partialEllipsisConsumed = true;
+    }
+
     return this.createToken(TokenType.Number, buffer);
   }
 
   protected parseEllipsis(): Token {
+    this.partialEllipsisConsumed = false;
+
     for (let x = 0; x < 2; x++) {
       if (this.stream.peekNextCharacter() !== '.') {
         throw new Error('Missing period in ellipsis.');
@@ -79,6 +95,8 @@ export class DiceLexer implements Lexer {
   }
 
   private constructNextToken() {
+    if (this.partialEllipsisConsumed) return this.parseEllipsis();
+
     let curChar: string;
     while (curChar = this.stream.getNextCharacter()) {
       switch (true) {
