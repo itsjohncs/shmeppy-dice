@@ -22,6 +22,7 @@ export class Dice {
     const lexer = this.createLexer(input);
     const parser = this.createParser(lexer);
     const interpreter = this.createInterpreter();
+
     const parseResult = parser.parse();
     if (parseResult.errors.length > 0) {
       throw new ParseError(parseResult);
