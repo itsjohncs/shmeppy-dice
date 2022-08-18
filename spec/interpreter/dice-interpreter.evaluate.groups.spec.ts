@@ -10,7 +10,7 @@ describe('DiceInterpreter', () => {
       group.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(group, errors);
       expect(group.getChildCount()).toBe(2);
     });
@@ -24,7 +24,7 @@ describe('DiceInterpreter', () => {
       group.addChild(repeat);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(group, errors);
       expect(group.getChildCount()).toBe(2);
       expect(group.getChild(0).type).toEqual(Ast.NodeType.Number);
@@ -47,7 +47,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(group.getChildCount()).toBe(3);
       expect(group.getChild(0).getAttribute('drop')).toBe(false);

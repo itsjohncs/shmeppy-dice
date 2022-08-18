@@ -18,7 +18,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 12, 18, 20);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       expect(exp.getAttribute('value')).toBe(20);
@@ -48,7 +48,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 12, 18, 19);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       expect(exp.getAttribute('value')).toBe(37);
@@ -74,7 +74,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 1, 18, 20);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       expect(exp.getAttribute('value')).toBe(1);
@@ -104,7 +104,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 2, 3, 19);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       expect(exp.getAttribute('value')).toBe(5);

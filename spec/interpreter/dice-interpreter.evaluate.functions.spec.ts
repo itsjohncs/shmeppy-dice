@@ -13,7 +13,7 @@ describe('DiceInterpreter', () => {
       func.addChild(exp);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBe(2);
     });
@@ -28,7 +28,7 @@ describe('DiceInterpreter', () => {
 
       const interpreter = new Interpreter.DiceInterpreter();
 
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBe(3);
     });
@@ -37,7 +37,7 @@ describe('DiceInterpreter', () => {
       func.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 9));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBe(3);
     });
@@ -50,7 +50,7 @@ describe('DiceInterpreter', () => {
       func.addChild(negate);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBe(9);
     });
@@ -64,7 +64,7 @@ describe('DiceInterpreter', () => {
       func.addChild(exp);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBe(3);
     });
@@ -78,7 +78,7 @@ describe('DiceInterpreter', () => {
       func.addChild(exp);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(func, errors);
       expect(res).toBeFalsy();
       expect(errors.length).toBe(1);

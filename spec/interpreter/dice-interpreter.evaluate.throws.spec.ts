@@ -14,7 +14,7 @@ describe('DiceInterpreter', () => {
       face.addChild(dice);
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(4));
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(face, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });

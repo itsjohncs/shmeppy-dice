@@ -10,7 +10,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 6));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(4));
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(8);
       expect(dice.getAttribute('value')).toBe(8);
     });
@@ -25,7 +25,7 @@ describe('DiceInterpreter', () => {
       add.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 4));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(3));
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(add, errors)).toBe(10);
       expect(dice.getAttribute('value')).toBe(6);
     });
@@ -40,7 +40,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 6));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(2));
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(6);
       expect(dice.getAttribute('value')).toBe(6);
     });
@@ -50,7 +50,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 6));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
 
       expect(dice.getChildCount()).toBe(2);
@@ -68,7 +68,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 'fate'));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
 
       expect(dice.getChildCount()).toBe(2);
@@ -91,7 +91,7 @@ describe('DiceInterpreter', () => {
       add.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 4));
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(add, errors);
 
       expect(add.getChildCount()).toBe(2);
@@ -119,7 +119,7 @@ describe('DiceInterpreter', () => {
 
       const interpreter = new Interpreter.DiceInterpreter();
 
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
 
       expect(dice.getChildCount()).toBe(3);
@@ -148,7 +148,7 @@ describe('DiceInterpreter', () => {
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(2));
 
       // 5 / 2 = 2.5, which is rounded to 3.
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(6);
     });
     it('evaluates fractional dice rolls <.5 ((7 / 5)d6).', () => {
@@ -164,7 +164,7 @@ describe('DiceInterpreter', () => {
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(2));
 
       // 7 / 5 = 1.4, which is rounded to 1.
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(2);
     });
     it('evaluates negative dice rolls at 0. ((-5)d6).', () => {
@@ -179,7 +179,7 @@ describe('DiceInterpreter', () => {
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(2));
 
       // -5d6 will be interpreted as 0.
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(0);
     });
     it('throws on an invalid dice expression (2d).', () => {
@@ -187,7 +187,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(4));
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -197,7 +197,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 6));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(4), null, {maxRollTimes: 3});
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -207,7 +207,7 @@ describe('DiceInterpreter', () => {
       dice.addChild(Ast.Factory.create(Ast.NodeType.DiceSides).setAttribute('value', 10));
 
       const interpreter = new Interpreter.DiceInterpreter(null, new MockRandomProvider(4), null, {maxDiceSides: 6});
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(dice, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });

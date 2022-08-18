@@ -1,12 +1,12 @@
 import { ExpressionNode } from '../ast';
-import { InterpreterError } from '../interpreter/error-message.class';
+import { InterpreterErrorMessage } from '../interpreter/error-message.class';
 import { Result } from './result.class';
 
 export class DiceResult extends Result {
   readonly initialSeed: number;
   readonly successes: number;
   readonly failures: number;
-  readonly errors: InterpreterError[];
+  readonly errors: InterpreterErrorMessage[];
 
   constructor(
     expression: ExpressionNode,
@@ -15,7 +15,7 @@ export class DiceResult extends Result {
     initialSeed: number,
     successes: number,
     failures: number,
-    errors: InterpreterError[]
+    errors: InterpreterErrorMessage[]
   ) {
     super(expression, renderedExpression, total);
     this.initialSeed = initialSeed;

@@ -1,5 +1,5 @@
 import * as Ast from '../ast';
-import { InterpreterError } from './error-message.class';
+import { InterpreterErrorMessage } from './error-message.class';
 import { FunctionDefinitionList } from './function-definition-list.class';
 import { DiceInterpreter } from './dice-interpreter.class';
 
@@ -27,7 +27,7 @@ DefaultFunctionDefinitions['sqrt'] = (interpreter, functionNode, errors) => {
 
 class DblDiceInterpreterProxyHandler implements ProxyHandler<DiceInterpreter> {
   static evaluateDiceStub(this: DiceInterpreter, target: DiceInterpreter,
-      expression: Ast.ExpressionNode, errors: InterpreterError[]): number {
+      expression: Ast.ExpressionNode, errors: InterpreterErrorMessage[]): number {
     return target.evaluateDice(expression, errors) * 2;
   }
 

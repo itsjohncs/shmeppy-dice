@@ -18,7 +18,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 12, 6, 20, 14);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       const res = interpreter.evaluate(exp, errors);
 
       expect(dice.getChildCount()).toBe(5);

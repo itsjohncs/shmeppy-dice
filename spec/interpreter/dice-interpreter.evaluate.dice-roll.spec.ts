@@ -10,7 +10,7 @@ describe('DiceInterpreter', () => {
         .setAttribute('value', 4);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(0);
       expect(dice.getAttribute('value')).toBe(4);
     });
@@ -20,7 +20,7 @@ describe('DiceInterpreter', () => {
         .setAttribute('value', 4);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(dice, errors)).toBe(4);
       expect(dice.getAttribute('value')).toBe(4);
     });

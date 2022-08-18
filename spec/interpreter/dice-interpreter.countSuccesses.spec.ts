@@ -18,7 +18,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 12, 6, 20, 14);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       const res = interpreter.countSuccesses(exp, errors);
@@ -44,7 +44,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(8, 12, 20);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
 
       const res = interpreter.countSuccesses(exp, errors);

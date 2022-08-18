@@ -18,7 +18,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(6, 5, 4, 3);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(dice.getChildCount()).toBe(4);
 
@@ -41,7 +41,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(3, 5, 4, 6);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(dice.getChildCount()).toBe(4);
 
@@ -64,7 +64,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(6, 5, 4, 3);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -75,7 +75,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 6));
 
       const interpreter = new Interpreter.DiceInterpreter(null);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });

@@ -9,6 +9,7 @@ import { DiceParser } from './parser/dice-parser.class';
 import { RandomProvider } from './random';
 import { InterpreterOptions } from './interpreter/interpreter-options.interface';
 import { ParseError } from './parser/parse-error.class';
+import { InterpreterError } from './interpreter/interpreter-error.class';
 
 export class Dice {
   constructor(
@@ -25,7 +26,13 @@ export class Dice {
     if (parseResult.errors.length > 0) {
       throw new ParseError(parseResult);
     }
-    return interpreter.interpret(parseResult.root);
+
+    const diceResult = interpreter.interpret(parseResult.root);
+    if (diceResult.errors.length > 0) {
+      throw new InterpreterError(diceResult);
+    }
+
+    return diceResult;
   }
 
   protected createLexer(input: string | CharacterStream): Lexer {

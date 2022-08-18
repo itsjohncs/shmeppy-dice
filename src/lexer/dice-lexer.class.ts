@@ -86,10 +86,9 @@ export class DiceLexer implements Lexer {
     this.partialEllipsisConsumed = false;
 
     for (let x = 0; x < 2; x++) {
-      if (this.stream.peekNextCharacter() !== '.') {
-        throw new Error('Missing period in ellipsis.');
+      if (this.stream.getNextCharacter() !== '.') {
+        throw LexError.fromStream(this.stream, 'Missing period in ellipsis.');
       }
-      this.stream.getNextCharacter();
     }
     return this.createToken(TokenType.Ellipsis, '...');
   }
@@ -139,7 +138,7 @@ export class DiceLexer implements Lexer {
         case /\s/.test(curChar):
           // Ignore whitespace.
           break;
-        default: throw new LexError(curChar, this.stream.getCurrentPosition());
+        default: throw LexError.fromStream(this.stream, "Unknown character.");
       }
     }
     // Terminator at end of stream.

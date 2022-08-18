@@ -25,7 +25,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(21);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -50,7 +50,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(18);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -70,7 +70,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(21);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -90,7 +90,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(15);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -115,7 +115,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(18);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -140,7 +140,7 @@ describe('DiceInterpreter', () => {
       );
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(10);
       expect(dice.getChildCount()).toBe(4);
     });
@@ -163,7 +163,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(6, 5, 6, 2, 1);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -185,7 +185,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(3, 4, 2, 1);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -207,7 +207,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(3, 4, 2, 1);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });
@@ -229,7 +229,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(3, 4, 2, 1);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(exp, errors);
       expect(errors.length).toBeGreaterThanOrEqual(1);
     });

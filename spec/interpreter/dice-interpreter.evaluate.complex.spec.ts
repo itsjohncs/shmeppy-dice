@@ -28,7 +28,7 @@ describe('DiceInterpreter', () => {
       mockList.numbers.push(1, 6, 4, 2, 5);
 
       const interpreter = new Interpreter.DiceInterpreter(null, mockList);
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       interpreter.evaluate(sort, errors);
 
       expect(sort.getAttribute('value')).toBe(11);

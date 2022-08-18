@@ -7,7 +7,7 @@ describe('DiceInterpreter', () => {
       const num = Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 4);
 
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(num, errors)).toBe(4);
     });
     it('correctly evaluates a subtraction (10-2).', () => {
@@ -15,7 +15,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(8);
     });
     it('correctly evaluates a multiplication (10*2).', () => {
@@ -23,7 +23,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(20);
     });
     it('correctly evaluates a division (10/2).', () => {
@@ -31,7 +31,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(5);
     });
     it('correctly evaluates a exponentiation (10^2).', () => {
@@ -39,7 +39,7 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(100);
     });
     it('correctly evaluates a modulo (10%2).', () => {
@@ -47,14 +47,14 @@ describe('DiceInterpreter', () => {
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 2));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(0);
     });
     it('correctly evaluates a negation (-10).', () => {
       const exp = Ast.Factory.create(Ast.NodeType.Negate);
       exp.addChild(Ast.Factory.create(Ast.NodeType.Number).setAttribute('value', 10));
       const interpreter = new Interpreter.DiceInterpreter();
-      const errors: Interpreter.InterpreterError[] = [];
+      const errors: Interpreter.InterpreterErrorMessage[] = [];
       expect(interpreter.evaluate(exp, errors)).toBe(-10);
     });
   });
