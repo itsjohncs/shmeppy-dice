@@ -1,7 +1,7 @@
 {
-  "name": "dice-typescript",
+  "name": "shmeppy-dice",
   "version": "1.6.1",
-  "description": "A TypeScript library for parsing dice rolling expressions, most commonly used in tabletop RPGs.",
+  "description": "Shmeppy's TypeScript library for parsing dice rolling expressions. Forked from dice-typescript.",
   "main": "./dist/index.js",
   "scripts": {
     "build": "tsc --build ./tsconfig.build.json",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trwolfe13/dice-typescript.git"
+    "url": "git+https://github.com/itsjohncs/shmeppy-dice.git"
   },
   "keywords": [
     "dice",
@@ -31,9 +31,9 @@
   "author": "Tom Wolfe <trwolfe13@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trwolfe13/dice-typescript/issues"
+    "url": "https://github.com/itsjohncs/shmeppy-dice/issues"
   },
-  "homepage": "https://github.com/trwolfe13/dice-typescript#readme",
+  "homepage": "https://github.com/itsjohncs/shmeppy-dice#readme",
   "devDependencies": {
     "@types/jasmine": "^4.0.3",
     "codacy-coverage": "^3.4.0",
